@@ -46,14 +46,14 @@ namespace OnDarkModeChange
         private void DoStuffDark()
         {
             //using var _ = Process.Start(@"C:\Program Files\Rainmeter\Rainmeter.exe", "!LoadLayout \"CPU RAM clocks big monitor\"");
-            foreach (var command in _settings.OnDarkMode)
+            foreach (var command in _settings.OnDarkModeCommands)
             {
                 using var _ = Process.Start(command.CommandFileName, command.Args);
             }
         }
         private void DoStuffLight()
         {
-            foreach (var command in _settings.OnLightMode)
+            foreach (var command in _settings.OnLightModeCommands)
             {
                 using var _ = Process.Start(command.CommandFileName, command.Args);
             }

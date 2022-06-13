@@ -14,8 +14,6 @@ namespace OnDarkModeChange
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-
-            // Build a config object, using env vars and JSON providers.
             IConfiguration config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .Build();
@@ -23,18 +21,6 @@ namespace OnDarkModeChange
             Settings settings = config.GetRequiredSection("Settings").Get<Settings>();
 
             Application.Run(new MainForm(settings));
-        }
-    }
-
-    public class Settings
-    {
-        public ExeWithArgs[] OnDarkMode { get; set; }
-        public ExeWithArgs[] OnLightMode { get; set; }
-
-        public class ExeWithArgs
-        {
-            public string CommandFileName { get; set; }
-            public string Args { get; set; }
         }
     }
 }
