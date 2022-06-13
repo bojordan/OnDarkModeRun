@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Configuration;
 
-namespace OnDarkModeChange
+namespace OnDarkModeRun
 {
     internal static class Program
     {

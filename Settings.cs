@@ -1,4 +1,4 @@
-﻿namespace OnDarkModeChange
+﻿namespace OnDarkModeRun
 {
     public class Settings
     {

@@ -1,4 +1,4 @@
-﻿namespace OnDarkModeChange
+﻿namespace OnDarkModeRun
 {
     partial class MainForm
     {
@@ -44,7 +44,7 @@
             // 
             this.stateCheckTimer.Enabled = true;
             this.stateCheckTimer.Interval = 1000;
-            this.stateCheckTimer.Tick += new System.EventHandler(this.stateCheckTimer_Tick);
+            this.stateCheckTimer.Tick += new System.EventHandler(this.StateCheckTimer_Tick);
             // 
             // currentStateLabel
             // 

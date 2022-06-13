@@ -1,7 +1,6 @@
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 
-namespace OnDarkModeChange
+namespace OnDarkModeRun
 {
     public partial class MainForm : Form
     {
@@ -13,15 +12,11 @@ namespace OnDarkModeChange
             InitializeComponent();
         }
 
-        // https://docs.microsoft.com/en-us/answers/questions/715081/how-to-detect-windows-dark-mode.html
-        [DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]
-        public static extern bool ShouldSystemUseDarkMode();
-
         private bool WasDarkMode { get; set; }
 
-        private void stateCheckTimer_Tick(object sender, EventArgs e)
+        private void StateCheckTimer_Tick(object sender, EventArgs e)
         {
-            if (ShouldSystemUseDarkMode())
+            if (Interop.ShouldSystemUseDarkMode())
             {
                 currentStateMenuItem.Text = "Currently in Dark Mode";
                 currentStateLabel.Text = "DARK MODE!";
@@ -45,17 +40,28 @@ namespace OnDarkModeChange
 
         private void DoStuffDark()
         {
-            //using var _ = Process.Start(@"C:\Program Files\Rainmeter\Rainmeter.exe", "!LoadLayout \"CPU RAM clocks big monitor\"");
-            foreach (var command in _settings.OnDarkModeCommands)
+            if (_settings.OnDarkModeCommands != null)
             {
-                using var _ = Process.Start(command.CommandFileName, command.Args);
+                foreach (var command in _settings.OnDarkModeCommands)
+                {
+                    if (command.CommandFileName != null && command.Args != null)
+                    {
+                        using var _ = Process.Start(command.CommandFileName, command.Args);
+                    }
+                }
             }
         }
         private void DoStuffLight()
         {
-            foreach (var command in _settings.OnLightModeCommands)
+            if (_settings.OnLightModeCommands != null)
             {
-                using var _ = Process.Start(command.CommandFileName, command.Args);
+                foreach (var command in _settings.OnLightModeCommands)
+                {
+                    if (command.CommandFileName != null && command.Args != null)
+                    {
+                        using var _ = Process.Start(command.CommandFileName, command.Args);
+                    }
+                }
             }
         }
 
