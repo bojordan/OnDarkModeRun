@@ -6,13 +6,13 @@ Until there is a configuration UI, simply edit the `appsettings.json` file to in
 ``` json
 {
   "Settings": {
-    "OnDarkModeCommand": [
+    "OnDarkModeCommands": [
       {
         "CommandFileName": "C:\\Program Files\\Rainmeter\\Rainmeter.exe",
         "Args": "!LoadLayout \"CPU RAM clocks big monitor\""
       }
     ],
-    "OnLightModeCommand": [
+    "OnLightModeCommands": [
       {
         "CommandFileName": "C:\\Program Files\\Rainmeter\\Rainmeter.exe",
         "Args": "!LoadLayout \"CPU RAM clocks big monitor light\""
